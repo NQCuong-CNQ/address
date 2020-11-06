@@ -26,7 +26,6 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">Stt</th>
-            <th scope="col">#</th>
             <th scope="col">Mã</th>
             <th scope="col">Tên</th>
             <th scope="col">Mã bưu chính</th>
@@ -47,6 +46,7 @@
             <td>Otto</td>
             <td>@mdo</td>
             <td>Mark</td>
+            <td>Mark</td>
           </tr>
         </tbody>
       </table>
@@ -64,12 +64,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">#: </span>
-          </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
-        </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã: </span>
@@ -110,7 +104,10 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <select name="unit_status" class="custom-select" id="inputGroupSelect01">
+            <option selected value="1">ACTIVE</option>
+            <option value="0">UNACTIVE</option>
+          </select>
         </div>
       </div>
       <div class="modal-footer">

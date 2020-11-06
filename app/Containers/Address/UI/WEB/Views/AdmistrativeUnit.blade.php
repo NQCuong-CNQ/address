@@ -74,11 +74,12 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã đơn vị hành chính: </span>
           </div>
-          <input name="unit_code"type="text" class="form-control" placeholder="" >
+          <input name="unit_code" type="text" class="form-control" placeholder="" >
+          
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Ten đơn vị hành chính: </span>
+            <span class="input-group-text" id="">Tên đơn vị hành chính: </span>
           </div>
           <input name="unit_name" type="text" class="form-control" placeholder="" >
         </div>
@@ -92,13 +93,24 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Loại: </span>
           </div>
-          <input name="unit_type" type="text" class="form-control" placeholder="" >
+          <select name="unit_type" class="custom-select" id="inputGroupSelect01">
+            <option selected value="0">COUNTRY</option>
+            <option value="1">PROVINCE</option>
+            <option value="2">CITY</option>
+            <option value="3">DISTRICT</option>
+            <option value="4">TOWNSHIP</option>
+            <option value="5">ROUTE</option>
+            <option value="6">STREET_NUMBER</option>
+          </select>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
-          <input name="unit_status" type="text" class="form-control" placeholder="" >
+          <select name="unit_status" class="custom-select" id="inputGroupSelect01">
+            <option selected value="1">ACTIVE</option>
+            <option value="0">UNACTIVE</option>
+          </select>
         </div>
 
       </div>

@@ -21,6 +21,13 @@ class Controller extends WebController
         $addresses = Apiato::call('Address@GetAllAddressComponentAction');
         return view('address::AddressComponent');
     }
+
+    public function getUserInput()
+    {
+       
+        return view('address::UserInput');
+    }
+
     public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)
     {
       $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
