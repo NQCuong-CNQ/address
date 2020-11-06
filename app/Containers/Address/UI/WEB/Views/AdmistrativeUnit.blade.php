@@ -61,49 +61,52 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form method="POST" action="{{route('addNewAdmistrativeUnit')}}">
+      {{ csrf_field() }}
       <div class="modal-body">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Thuộc quốc gia: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="unit_country_code" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã đơn vị hành chính: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="unit_code"type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Ten đơn vị hành chính: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="unit_name" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Cấp bậc: </span>
+            <span class="input-group-text" id="">Cấp bậc </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_level" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Loại: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="unit_type" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="unit_status" type="text" class="form-control" placeholder="" >
         </div>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
