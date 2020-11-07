@@ -12,7 +12,10 @@
 </head>
 <body class="p-4">
     <div>
-      <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold;">
+      <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit',)}}'">Admistrative Unit</button>
+      <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput',)}}'">User Input</button>
+      
+      <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
         Danh sách cấu thành địa chỉ
       </p>
       </hr>
