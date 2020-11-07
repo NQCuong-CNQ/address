@@ -37,17 +37,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Mark</td>
-          </tr>
+          @if($address !=null)
+          <?php foreach($address as $item) :?>
+            <tr>
+              <th scope="row">1</th>
+              <td>{{$item->address_component_code}}</td>
+              <td>{{$item->address_component_name}}</td>
+              <td>{{$item->address_component_post_code}}</td>
+              <td>{{$item->address_component_phone_code}}</td>
+              <td>{{$item->address_component_zip_code}}</td>
+              <td>{{$item->address_component_unit_code}}</td>
+              <td>{{$item->address_component_status}}</td>
+            </tr>
+          <?php endforeach ;?>
+          @endif
         </tbody>
       </table>
     </div>
@@ -59,61 +62,65 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Thêm đơn vị hành chính</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form method="POST" action="{{route('addNewAddressComponent')}}">
+      {{ csrf_field() }}
       <div class="modal-body">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_code" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Tên: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_name" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã bưu chính: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_post_code" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã vùng điện thoại: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_phone_code" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Zip code: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_zip_code" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Đơn vị hành chính: </span>
           </div>
-          <input type="text" class="form-control" placeholder="" aria-label="Username">
+          <input name="address_component_unit_code" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
-          <select name="unit_status" class="custom-select" id="inputGroupSelect01">
+          <select name="address_component_status" name="unit_status" class="custom-select" id="inputGroupSelect01">
             <option selected value="1">ACTIVE</option>
             <option value="0">UNACTIVE</option>
           </select>
         </div>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

@@ -6,4 +6,6 @@ $router->get('AddressComponent','Controller@getAddressComponent')->name('Address
 
 $router->get('UserInput','Controller@getUserInput')->name('UserInput');
 
-$router->post('Add','Controller@addNewAdmistrativeUnit')->name('addNewAdmistrativeUnit');
+$router->post('addNewAdmistrativeUnit','Controller@addNewAdmistrativeUnit')->name('addNewAdmistrativeUnit');
+
+$router->post('addNewAddressComponent','Controller@addNewAddressComponent')->name('addNewAddressComponent');

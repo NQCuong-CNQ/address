@@ -36,16 +36,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-          </tr>
+          
+          @if($address !=null)
+          <?php foreach($address as $item) :?>
+            <tr>
+              <th scope="row">1</th>
+              <td>{{$item->admistrative_unit_country_code}}</td>
+              <td>{{$item->admistrative_unit_code}}</td>
+              <td>{{$item->admistrative_unit_name}}</td>
+              <td>{{$item->admistrative_unit_address_component_level}}</td>
+              <td>{{$item->admistrative_unit_type}}</td>
+              <td>{{$item->admistrative_unit_status}}</td>
+            </tr>
+          <?php endforeach ;?>
+          @endif
+          
         </tbody>
       </table>
     </div>
@@ -93,21 +98,21 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Loại: </span>
           </div>
-          <select name="unit_type" class="custom-select" id="inputGroupSelect01">
-            <option selected value="0">COUNTRY</option>
-            <option value="1">PROVINCE</option>
-            <option value="2">CITY</option>
-            <option value="3">DISTRICT</option>
-            <option value="4">TOWNSHIP</option>
-            <option value="5">ROUTE</option>
-            <option value="6">STREET_NUMBER</option>
+          <select name="unit_type" class="custom-select" id="">
+            <option selected value="1">COUNTRY</option>
+            <option value="2">PROVINCE</option>
+            <option value="3">CITY</option>
+            <option value="4">DISTRICT</option>
+            <option value="5">TOWNSHIP</option>
+            <option value="6">ROUTE</option>
+            <option value="7">STREET_NUMBER</option>
           </select>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
-          <select name="unit_status" class="custom-select" id="inputGroupSelect01">
+          <select name="unit_status" class="custom-select" id="">
             <option selected value="1">ACTIVE</option>
             <option value="0">UNACTIVE</option>
           </select>

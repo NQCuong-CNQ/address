@@ -13,13 +13,13 @@ class Controller extends WebController
     public function getAdmistrativeUnit()
     {
         $addresses = Apiato::call('Address@GetAllAdmistrativeUnitAction');
-        return view('address::AdmistrativeUnit');
+        return view('address::AdmistrativeUnit')->with('address', $addresses);
     }
 
     public function getAddressComponent()
     {
         $addresses = Apiato::call('Address@GetAllAddressComponentAction');
-        return view('address::AddressComponent');
+        return view('address::AddressComponent')->with('address', $addresses);
     }
 
     public function getUserInput()
@@ -32,5 +32,11 @@ class Controller extends WebController
     {
       $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
         return redirect()->route('AdmistrativeUnit');
+    }
+
+    public function addNewAddressComponent(CreateAdmistrativeUnitRequest $request)
+    {
+      $addresses = Apiato::call('Address@addNewAddressComponentAction',[$request]);
+        return redirect()->route('AddressComponent');
     }
 }
