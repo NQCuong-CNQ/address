@@ -24,9 +24,9 @@
         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới</button>
       </div>
       </hr>
-      <div class="d-flex">Tổng số đơn vị hành chính: <p>4</p> </div>
+      <div class="d-flex">Tổng số đơn vị hành chính: <p class="pl-2" id="countTable"></p>  </div>
       </hr>
-      <table class="table table-bordered ">
+      <table id="table" class="table table-bordered ">
         <thead class="thead-light">
           <tr>
             <th scope="col">Stt</th>
@@ -75,34 +75,33 @@
       <div class="modal-body">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Thuộc quốc gia: </span>
+            <span class="input-group-text" id="">Tên đơn vị hành chính: </span>
           </div>
-          <input name="unit_country_code" type="text" class="form-control" placeholder="" >
+          <input name="admistrative_unit_name" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã đơn vị hành chính: </span>
           </div>
-          <input name="unit_code" type="text" class="form-control" placeholder="" >
-          
+          <input name="admistrative_unit_code" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Tên đơn vị hành chính: </span>
+            <span class="input-group-text" id="">Mã quốc gia: </span>
           </div>
-          <input name="unit_name" type="text" class="form-control" placeholder="" >
+          <input name="admistrative_unit_country_code" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Cấp bậc </span>
+            <span class="input-group-text" id="">Loại đơn vị hành chính: </span>
           </div>
-          <input name="address_component_level" type="text" class="form-control" placeholder="" >
+          <input name="admistrative_unit_type" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Loại: </span>
+            <span class="input-group-text" id="">Cấp bậc đơn vị hành chính: </span>
           </div>
-          <select name="unit_type" class="custom-select" id="">
+          <select name="admistrative_unit_address_component_level" class="custom-select" id="">
             <option selected value="1">COUNTRY</option>
             <option value="2">PROVINCE</option>
             <option value="3">CITY</option>
@@ -111,6 +110,12 @@
             <option value="6">ROUTE</option>
             <option value="7">STREET_NUMBER</option>
           </select>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Thứ tự sắp xếp: </span>
+          </div>
+          <input name="admistrative_unit_order" type="text" class="form-control" placeholder="" >
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -134,3 +139,9 @@
 
 </body>
 </html>
+<script src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var iRowCount = document.getElementById('table').rows.length -1;
+  document.getElementById('countTable').innerHTML = iRowCount;
+</script>

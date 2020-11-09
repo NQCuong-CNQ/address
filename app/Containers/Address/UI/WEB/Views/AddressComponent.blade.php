@@ -9,12 +9,14 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!-- fontawesome -->
+  <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
 </head>
 <body class="p-4">
     <div>
       <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit',)}}'">Admistrative Unit</button>
       <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput',)}}'">User Input</button>
-      
+
       <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
         Danh sách cấu thành địa chỉ
       </p>
@@ -23,9 +25,9 @@
         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới cấu thành địa chỉ</button>
       </div>
       </hr>
-      <div class="d-flex">Tổng: <p>4</p> </div>
+      <div class="d-flex">Tổng: <p class="pl-2" id="countTable"></p> </div>
       </hr>
-      <table class="table table-bordered ">
+      <table id="table" class="table table-bordered ">
         <thead class="thead-light">
           <tr>
             <th scope="col">Stt</th>
@@ -51,6 +53,12 @@
               <td>{{$item->address_component_zip_code}}</td>
               <td>{{$item->address_component_unit_code}}</td>
               <td>{{$item->address_component_status}}</td>
+              <td> 
+                <div class="d-flex justify-content-center">
+                  <a href="" class="pr-3"><i class="fas fa-trash-alt"></i></a> 
+                  <a href=""><i class="fas fa-edit"></i></a>  
+                </div>
+              </td>
             </tr>
           <?php endforeach ;?>
           @endif
@@ -72,6 +80,18 @@
       <form method="POST" action="{{route('addNewAddressComponent')}}">
       {{ csrf_field() }}
       <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Quốc gia: </span>
+          </div>
+          <input name="" type="text" class="form-control" placeholder="">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Đơn vị hành chính: </span>
+          </div>
+          <input name="address_component_unit_code" type="text" class="form-control" placeholder="">
+        </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Mã: </span>
@@ -104,17 +124,17 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Đơn vị hành chính: </span>
+            <span class="input-group-text" id="">Thứ tự sắp xếp: </span>
           </div>
-          <input name="address_component_unit_code" type="text" class="form-control" placeholder="">
+          <input name="address_component_order" type="text" class="form-control" placeholder="">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="">Trạng thái: </span>
           </div>
           <select name="address_component_status" name="unit_status" class="custom-select" id="inputGroupSelect01">
-            <option selected value="1">ACTIVE</option>
-            <option value="0">UNACTIVE</option>
+            <option selected value="1">Kích hoạt</option>
+            <option value="0">Vô hiệu</option>
           </select>
         </div>
       </div>
@@ -130,3 +150,8 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+  var iRowCount = document.getElementById('table').rows.length -1;
+  document.getElementById('countTable').innerHTML = iRowCount;
+</script>
