@@ -18,16 +18,16 @@ class AddNewAdmistrativeUnitTask extends Task
 
     public function run($request)
     {
-      $uuid = Uuid::generate(5,$request, Uuid::NS_DNS);
+      $admistrative_unit_uuid = Uuid::generate(5,$request, Uuid::NS_DNS);
         return $this->repository->create([
-          'admistrative_unit_uuid'=>  $uuid,
-          'admistrative_unit_name'=>  $request->unit_name,
-          'admistrative_unit_address_component_level'=> $request->address_component_level,
-          'admistrative_unit_country_code'=> $request->unit_country_code,
-          'admistrative_unit_type'=>  $request->unit_type,
-          'admistrative_unit_status'=>  $request->unit_status,
-          // 'admistrative_unit_order'=>  ,
-          'admistrative_unit_code'=>  $request->unit_code,
+          'admistrative_unit_uuid'=>  $admistrative_unit_uuid,
+          'admistrative_unit_name'=>  $request->admistrative_unit_name,
+          'admistrative_unit_address_component_level'=> $request->admistrative_unit_address_component_level,
+          'admistrative_unit_country_code'=> $request->admistrative_unit_country_code,
+          'admistrative_unit_type'=>  $request->admistrative_unit_type,
+          'admistrative_unit_status'=>  $request->admistrative_unit_status,
+          'admistrative_unit_order'=>  1,
+          'admistrative_unit_code'=>  $request->admistrative_unit_code,
           // 'admistrative_unit_created_by_account_uuid'=>  ,
           // 'admistrative_unit_created_at'=>  ,
           // 'admistrative_unit_updated_by_account_uuid'=>  ,

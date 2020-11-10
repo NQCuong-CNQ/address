@@ -18,15 +18,15 @@ class AddNewAddressComponentTask extends Task
 
     public function run($request)
     {
-      $uuid = Uuid::generate(5,$request, Uuid::NS_DNS);
+      $address_component_uuid = Uuid::generate(5,$request, Uuid::NS_DNS);
         return $this->repository->create([
-          'address_component_uuid'=>  $uuid,
+          'address_component_uuid'=>  $address_component_uuid,
           'address_component_name'=>  $request->address_component_name,
           'address_component_code'=> $request->address_component_code,
           // 'address_component_alias'=> ,
           'address_component_post_code'=>  $request->address_component_post_code,
           // 'address_component_country_code'=>  ,
-          // 'address_component_order'=>  ,
+          'address_component_order'=>  $request->address_component_order,
           'address_component_status'=>  $request->address_component_status,
           'address_component_unit_code'=>   $request->address_component_unit_code,
           'address_component_phone_code'=>  $request->address_component_phone_code,
