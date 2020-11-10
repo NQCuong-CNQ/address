@@ -10,8 +10,8 @@ class AddNewAdmistrativeUnitAction extends Action
 {
     public function run(Request $request)
     {
-        $address = Apiato::call('Address@AddNewAdmistrativeUnitTask',[$request]);
+        $data = Apiato::call('Address@AddNewAdmistrativeUnitTask',[$request]);
 
-        return $address;
+        return $data;
     }
 }

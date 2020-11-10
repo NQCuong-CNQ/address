@@ -10,8 +10,8 @@ class GetAllAdmisUnitCountryCodeAction extends Action
 {
     public function run()
     {
-        $addresses = Apiato::call('Address@GetAllAdmisUnitCountryCodeTask');
+        $data = Apiato::call('Address@GetAllAdmisUnitCountryCodeTask');
 
-        return $addresses;
+        return $data;
     }
 }

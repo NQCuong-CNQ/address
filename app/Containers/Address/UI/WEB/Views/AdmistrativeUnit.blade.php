@@ -11,12 +11,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
+
+  <style type="text/css">
+    .input-group-prepend{
+      width: 30%;
+    }
+  </style>
 </head>
 <body class="p-4">
   <div>
 
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent',)}}'">Address Component</button>
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput',)}}'">User Input</button>
+    <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
+    <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput')}}'">User Input</button>
 
     <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
       Danh sách đơn vị hành chính
@@ -89,27 +95,27 @@
       <form method="POST" action="{{route('addNewAdmistrativeUnit')}}">
         {{ csrf_field() }}
         <div class="modal-body">
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" >
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Tên đơn vị hành chính: </span>
+              <span class="input-group-text w-100" id="">Tên đơn vị hành chính: </span>
             </div>
             <input name="admistrative_unit_name" type="text" class="form-control" placeholder="" >
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Mã đơn vị hành chính: </span>
+              <span class="input-group-text w-100" id="">Mã đơn vị hành chính: </span>
             </div>
             <input name="admistrative_unit_code" type="text" class="form-control" placeholder="" >
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Mã quốc gia: </span>
+              <span class="input-group-text w-100" id="">Mã quốc gia: </span>
             </div>
             <input name="admistrative_unit_country_code" type="text" class="form-control" placeholder="" >
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Loại đơn vị hành chính: </span>
+              <span class="input-group-text w-100" id="">Loại đơn vị hành chính: </span>
             </div>
             <select name="admistrative_unit_type" class="custom-select" id="">
               <option selected value="1">COUNTRY</option>
@@ -123,19 +129,19 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Cấp bậc đơn vị hành chính: </span>
+              <span class="input-group-text w-100" id="">Cấp bậc đơn vị hành chính: </span>
             </div>
             <input name="admistrative_unit_address_component_level" type="text" class="form-control" placeholder="" >
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Thứ tự sắp xếp: </span>
+              <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
             </div>
             <input name="admistrative_unit_order" type="text" class="form-control" placeholder="" >
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Trạng thái: </span>
+              <span class="input-group-text w-100" id="">Trạng thái: </span>
             </div>
             <select name="admistrative_unit_status" class="custom-select" id="">
               <option selected value="1">Kích hoạt</option>

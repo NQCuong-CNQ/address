@@ -10,8 +10,8 @@ class AddNewAddressComponentAction extends Action
 {
     public function run(Request $request)
     {
-        $address = Apiato::call('Address@AddNewAddressComponentTask',[$request]);
+        $data = Apiato::call('Address@AddNewAddressComponentTask',[$request]);
 
-        return $address;
+        return $data;
     }
 }

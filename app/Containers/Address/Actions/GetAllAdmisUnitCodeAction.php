@@ -10,8 +10,8 @@ class GetAllAdmisUnitCodeAction extends Action
 {
     public function run()
     {
-        $addresses = Apiato::call('Address@GetAllAdmisUnitCodeTask');
+        $data = Apiato::call('Address@GetAllAdmisUnitCodeTask');
 
-        return $addresses;
+        return $data;
     }
 }

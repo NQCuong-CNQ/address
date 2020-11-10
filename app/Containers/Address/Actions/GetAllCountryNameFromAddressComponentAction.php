@@ -10,8 +10,8 @@ class GetAllCountryNameFromAddressComponentAction extends Action
 {
     public function run()
     {
-        $addresses = Apiato::call('Address@GetAllCountryNameFromAddressComponentTask');
+        $data = Apiato::call('Address@GetAllCountryNameFromAddressComponentTask');
 
-        return $addresses;
+        return $data;
     }
 }

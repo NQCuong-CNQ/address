@@ -30,8 +30,14 @@ class Controller extends WebController
 
     public function getUserInput()
     {
-       
-        return view('address::UserInput');
+        $allCountryName = Apiato::call('Address@GetAllCountryNameFromAddressComponentAction');
+
+        $unitNameOfCountry = Apiato::call('Address@GetUnitNameOfCountryFromAdmisUnitAction');
+        $unitNameOfCity = Apiato::call('Address@GetUnitNameOfCityFromAdmisUnitAction');
+        $unitNameOfDistrict = Apiato::call('Address@GetUnitNameOfDistrictFromAdmisUnitAction');
+        $unitNameOfWard = Apiato::call('Address@GetUnitNameOfWardFromAdmisUnitAction');
+
+        return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard);
     }
 
     public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)

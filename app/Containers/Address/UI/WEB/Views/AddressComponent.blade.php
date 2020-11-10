@@ -11,6 +11,12 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
+  
+  <style type="text/css">
+    .input-group-prepend{
+      width: 30%;
+    }
+  </style>
 </head>
 <body class="p-4">
   <div>
@@ -81,8 +87,8 @@
         {{ csrf_field() }}
         <div class="modal-body">
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Quốc gia: </span>
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Quốc gia: </span>
             </div>
             <select name="" class="custom-select" id="CountryNameSelectedBox" onchange="changeCountryName();">
               <option disabled selected value> -- select an option -- </option>
@@ -94,50 +100,50 @@
             </select>
           </div>
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Đơn vị hành chính: </span>
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Đơn vị hành chính: </span>
             </div>
-            <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" id="">
+            <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" id=""></select>
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Mã: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Mã: </span>
               </div>
               <input name="address_component_code" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Tên: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Tên: </span>
               </div>
               <input name="address_component_name" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Mã bưu chính: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Mã bưu chính: </span>
               </div>
               <input name="address_component_post_code" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Mã vùng điện thoại: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Mã vùng điện thoại: </span>
               </div>
               <input name="address_component_phone_code" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Zip code: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Zip code: </span>
               </div>
               <input name="address_component_zip_code" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Thứ tự sắp xếp: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
               </div>
               <input name="address_component_order" type="text" class="form-control" placeholder="">
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="">Trạng thái: </span>
+              <div class="input-group-prepend" >
+                <span class="input-group-text w-100" id="">Trạng thái: </span>
               </div>
               <select name="address_component_status" class="custom-select" id="">
                 <option selected value="1">Kích hoạt</option>

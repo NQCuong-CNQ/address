@@ -9,11 +9,17 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <style type="text/css">
+  .input-group-prepend{
+    width: 30%;
+  }
+  </style>
 </head>
 <body class="p-4">
     <div>
-      <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent',)}}'">Address Component</button>
-      <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit',)}}'">Admistrative Unit</button>
+      <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
+      <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit')}}'">Admistrative Unit</button>
       
       <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
        Địa chỉ
@@ -22,69 +28,62 @@
       <div class="w-100 " style="display: grid; grid-template-columns: auto auto;">
         <div class="input-group mb-3 pr-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Địa chỉ: </span>
+            <span class="input-group-text w-100" id="">Địa chỉ: </span>
           </div>
           <input type="text" class="form-control" placeholder="" aria-label="Username">
         </div>
         <div class="input-group mb-3 pr-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Quốc gia: </span>
+            <span class="input-group-text w-100" id="">{{$unitNameOfCountry}}:</span>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-        <div class="input-group mb-3 pr-3" style="display: none;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">Tỉnh thành: </span>
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-        <div class="input-group mb-3 pr-3" style="display: none;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">Quận huyện: </span>
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-        <div class="input-group mb-3 pr-3" style="display: none;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">Phường xã: </span>
-          </div>
-          <select class="custom-select" id="inputGroupSelect01">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <select class="custom-select" id="inputGroupCountry" onchange="changeCountryName();">
+            <option disabled selected value> -- select an option -- </option>
+              <?php foreach($allCountryName as $itemCountryName) :?>
+                <td>
+                  <option value="{{$itemCountryName->address_component_code}}">{{$itemCountryName->address_component_name}}</option>
+                </td>
+              <?php endforeach ;?>
           </select>
         </div>
         <div class="input-group mb-3 pr-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Nhân viên quản lý: </span>
+            <span class="input-group-text w-100" id="">{{$unitNameOfCity}}:</span>
+          </div>
+          <select class="custom-select" id="inputGroupCity">
+            
+          </select>
+        </div>
+        <div class="input-group mb-3 pr-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text w-100" id="">{{$unitNameOfDistrict}}: </span>
+          </div>
+          <select class="custom-select" id="inputGroupDistrict">
+            
+          </select>
+        </div>
+        <div class="input-group mb-3 pr-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text w-100" id="">{{$unitNameOfWard}}: </span>
+          </div>
+          <select class="custom-select" id="inputGroupWard">
+            
+          </select>
+        </div>
+        <div class="input-group mb-3 pr-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text w-100" id="">Nhân viên quản lý: </span>
           </div>
           <input type="text" class="form-control" placeholder="" aria-label="Username">
         </div>
         <div class="input-group mb-3 pr-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Mã số thuế: </span>
+            <span class="input-group-text w-100" id="">Mã số thuế: </span>
           </div>
           <input type="text" class="form-control" placeholder="" aria-label="Username">
         </div>
         <div class="input-group mb-3 pr-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="">Số fax: </span>
+            <span class="input-group-text w-100" id="">Số fax: </span>
           </div>
           <input type="text" class="form-control" placeholder="" aria-label="Username">
         </div>
