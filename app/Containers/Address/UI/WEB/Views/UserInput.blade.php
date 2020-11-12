@@ -45,23 +45,23 @@
               <?php endforeach ;?>
           </select>
         </div>
-        <div class="input-group mb-3 pr-3">
+        <div id="cityBlock" class="input-group mb-3 pr-3" style="display: none;">
           <div class="input-group-prepend">
             <span class="input-group-text w-100" id="">{{$unitNameOfCity}}:</span>
           </div>
-          <select class="custom-select" id="inputGroupCity">
+          <select class="custom-select" id="inputGroupCity" onchange="changeCityName();">
             
           </select>
         </div>
-        <div class="input-group mb-3 pr-3">
+        <div id="districtBlock" class="input-group mb-3 pr-3" style="display: none;">
           <div class="input-group-prepend">
             <span class="input-group-text w-100" id="">{{$unitNameOfDistrict}}: </span>
           </div>
-          <select class="custom-select" id="inputGroupDistrict">
+          <select class="custom-select" id="inputGroupDistrict" onchange="changeDistrictName();">
             
           </select>
         </div>
-        <div class="input-group mb-3 pr-3">
+        <div id="wardBlock" class="input-group mb-3 pr-3" style="display: none;">
           <div class="input-group-prepend">
             <span class="input-group-text w-100" id="">{{$unitNameOfWard}}: </span>
           </div>
@@ -92,3 +92,15 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+  function changeCountryName() {
+      document.getElementById('cityBlock').style.display = "flex";
+  }
+  function changeCityName() {
+      document.getElementById('districtBlock').style.display = "flex";
+  }
+  function changeDistrictName() {
+      document.getElementById('wardBlock').style.display = "flex";
+  }
+</script>

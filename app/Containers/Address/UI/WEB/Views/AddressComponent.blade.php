@@ -103,70 +103,100 @@
             <div class="input-group-prepend" >
               <span class="input-group-text w-100" id="">Đơn vị hành chính: </span>
             </div>
-            <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" id=""></select>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Mã: </span>
-              </div>
-              <input name="address_component_code" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Tên: </span>
-              </div>
-              <input name="address_component_name" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Mã bưu chính: </span>
-              </div>
-              <input name="address_component_post_code" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Mã vùng điện thoại: </span>
-              </div>
-              <input name="address_component_phone_code" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Zip code: </span>
-              </div>
-              <input name="address_component_zip_code" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
-              </div>
-              <input name="address_component_order" type="text" class="form-control" placeholder="">
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend" >
-                <span class="input-group-text w-100" id="">Trạng thái: </span>
-              </div>
-              <select name="address_component_status" class="custom-select" id="">
-                <option selected value="1">Kích hoạt</option>
-                <option value="0">Vô hiệu</option>
-              </select>
-            </div>
+            <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" onchange="changeAdmisUnit();">
+              <option disabled selected value>Quốc gia</option>
+            </select>
           </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-primary">Add</button>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Mã: </span>
+            </div>
+            <input name="address_component_code" type="text" class="form-control" placeholder="">
           </div>
-        </form>
-      </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Tên: </span>
+            </div>
+            <input name="address_component_name" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Mã bưu chính: </span>
+            </div>
+            <input name="address_component_post_code" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Mã vùng điện thoại: </span>
+            </div>
+            <input name="address_component_phone_code" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Zip code: </span>
+            </div>
+            <input name="address_component_zip_code" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
+            </div>
+            <input name="address_component_order" type="text" class="form-control" placeholder="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">Trạng thái: </span>
+            </div>
+            <select name="address_component_status" class="custom-select" id="">
+              <option selected value="1">Kích hoạt</option>
+              <option value="0">Vô hiệu</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">country_code: </span>
+            </div>
+            <input id="address_component_unit_country_code_hidden" name="address_component_unit_country_code_hidden" type="text" class="form-control" placeholder="" value="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">all type: </span>
+            </div>
+            <input id="address_component_unit_all_type_hidden" name="address_component_unit_all_type_hidden" type="text" class="form-control" placeholder="" value="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">type: </span>
+            </div>
+            <input id="address_component_unit_type_hidden" name="address_component_unit_type_hidden" type="text" class="form-control" placeholder="" value="">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend" >
+              <span class="input-group-text w-100" id="">level: </span>
+            </div>
+            <input id="address_component_unit_level_hidden" name="address_component_unit_level_hidden" type="text" class="form-control" placeholder="" value="0">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
     </div>
   </div>
+</div>
 
 </body>
 </html>
 
 <script type="text/javascript">
+  var allType;
   var iRowCount = document.getElementById('table').rows.length -1;
   document.getElementById('countTable').innerHTML = iRowCount;
+
+  var admistrative_unit_address_component_level = <?php echo $admisUnitLevel ?>;
+  var admistrative_unit_country_code = <?php echo $admisUnitCountryCode ?>;
+  var admistrative_unit_type = <?php echo $admisUnitType ?>; 
 
   function changeCountryName() {
     var selectBox = document.getElementById("CountryNameSelectedBox");
@@ -174,15 +204,34 @@
 
     var admisUnitCountryCode = <?php echo $admisUnitCountryCode ?>;
     var admisUnitCode = <?php echo $admisUnitCode ?>;
-    
+    var admisUnitType = <?php echo $admisUnitType ?>;
+
     $('#unit_code-select-box')
     .find('option')
     .remove()
     .end();
-
+    
+    $("#unit_code-select-box").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
     for (i = 0; i < admisUnitCountryCode.length; i++) {
       if(admisUnitCountryCode[i] == selectedValue){
-        $("#unit_code-select-box").append(new Option(admisUnitCode[i]));
+        $("#unit_code-select-box").append(new Option(admisUnitCode[i], admisUnitType[i]));
+      }
+    }
+
+    document.getElementById('address_component_unit_country_code_hidden').value = selectedValue;
+    document.getElementById('address_component_unit_all_type_hidden').value = admisUnitType;
+    allType = admisUnitType;
+  }
+
+  function changeAdmisUnit() { 
+    var selectBox = document.getElementById("unit_code-select-box");
+    document.getElementById('address_component_unit_type_hidden').value = allType[selectBox.selectedIndex-1];
+
+    var admisUnitType = document.getElementById('address_component_unit_all_type_hidden').value;
+    for (i = 0; i < admistrative_unit_country_code.length; i++) {
+      if(document.getElementById('address_component_unit_country_code_hidden').value == admistrative_unit_country_code[i] && allType[selectBox.selectedIndex-1] == admistrative_unit_type[i])
+      {
+        document.getElementById('address_component_unit_level_hidden').value = admistrative_unit_address_component_level[i];
       }
     }
   }

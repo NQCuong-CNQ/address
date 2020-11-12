@@ -23,9 +23,11 @@ class Controller extends WebController
         $admistrativeUnit = Apiato::call('Address@GetAllAdmistrativeUnitAction');
         $admisUnitCountryCode = Apiato::call('Address@GetAllAdmisUnitCountryCodeAction');
         $admisUnitCode = Apiato::call('Address@GetAllAdmisUnitCodeAction');
-
+        $admisUnitType = Apiato::call('Address@GetAllAdmisUnitTypeAction');
         $allCountryName = Apiato::call('Address@GetAllCountryNameFromAddressComponentAction');
-        return view('address::AddressComponent')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent)->with('allCountryName', $allCountryName)->with('admisUnitCountryCode', $admisUnitCountryCode)->with('admisUnitCode', $admisUnitCode);
+        $admisUnitLevel = Apiato::call('Address@GetAllAdmisUnitLevelAction');
+        
+        return view('address::AddressComponent')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent)->with('allCountryName', $allCountryName)->with('admisUnitCountryCode', $admisUnitCountryCode)->with('admisUnitCode', $admisUnitCode)->with('admisUnitType', $admisUnitType)->with('admisUnitLevel', $admisUnitLevel);
     }
 
     public function getUserInput()
@@ -42,13 +44,13 @@ class Controller extends WebController
 
     public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)
     {
-      $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
+        $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
         return redirect()->route('AdmistrativeUnit');
     }
 
     public function addNewAddressComponent(CreateAdmistrativeUnitRequest $request)
     {
-      $addresses = Apiato::call('Address@addNewAddressComponentAction',[$request]);
+        $addresses = Apiato::call('Address@addNewAddressComponentAction',[$request]);
         return redirect()->route('AddressComponent');
     }
 }

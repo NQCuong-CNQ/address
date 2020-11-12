@@ -5,7 +5,7 @@ namespace App\Containers\Address\Tasks;
 use App\Containers\Address\Data\Repositories\AdmistrativeUnitRepository;
 use App\Ship\Parents\Tasks\Task;
 
-class GetUnitNameOfLevelFromAdmisUnitTask extends Task
+class GetAllAdmisUnitLevelTask extends Task
 {
 
     protected $repository;
@@ -15,8 +15,8 @@ class GetUnitNameOfLevelFromAdmisUnitTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($level, $countryCode)
+    public function run()
     {
-        return $this->repository->where('admistrative_unit_address_component_level', $level)->where('admistrative_unit_country_code', $countryCode)->pluck('admistrative_unit_name')->first();
+        return $this->repository->pluck('admistrative_unit_address_component_level');
     }
 }

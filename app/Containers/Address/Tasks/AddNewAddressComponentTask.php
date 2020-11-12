@@ -25,7 +25,7 @@ class AddNewAddressComponentTask extends Task
           'address_component_code'=> $request->address_component_code,
           // 'address_component_alias'=> ,
           'address_component_post_code'=>  $request->address_component_post_code,
-          // 'address_component_country_code'=>  ,
+          'address_component_country_code'=>  $request->address_component_country_code,
           'address_component_order'=>  $request->address_component_order,
           'address_component_status'=>  $request->address_component_status,
           'address_component_unit_code'=>   $request->address_component_unit_code,
@@ -38,12 +38,12 @@ class AddNewAddressComponentTask extends Task
           // 'address_component_updated_at'=>  ,
           // 'address_component_deleted_by_account_uuid'=>  ,
           // 'address_component_deleted_at'=>  ,
-          // 'address_component_unit_level'=>  ,
-          // 'address_component_parent_uuid'=>  ,
+          'address_component_unit_level'=>  $request->address_component_unit_level,
+          'address_component_parent_uuid'=>  $request->address_component_parent_uuid,
           // 'address_component_level_scope'=>  ,
-          // 'address_component_level'=>  ,
-          // 'address_component_level_left'=>  ,
-          // 'address_component_level_right'=>  ,
+          'address_component_level'=>  $request->address_component_level,
+          'address_component_level_left'=>  $request->address_component_level_left,
+          'address_component_level_right'=>  $request->address_component_level_right,
         ]);
     }
 }
