@@ -57,7 +57,13 @@
         <td>{{$item->address_component_post_code}}</td>
         <td>{{$item->address_component_phone_code}}</td>
         <td>{{$item->address_component_zip_code}}</td>
-        <td>{{$item->address_component_unit_code}}</td>
+
+        <?php foreach($admistrativeUnit as $itemAdmis) :?>
+          @if(strtoupper($itemAdmis->admistrative_unit_code) == $item->address_component_unit_code)
+            <td>{{$itemAdmis->admistrative_unit_name}}</td>
+          @endif
+        <?php endforeach ;?>
+
         <td>{{$item->address_component_status}}</td>
         <td> 
           <div class="d-flex justify-content-center">
@@ -104,7 +110,7 @@
               <span class="input-group-text w-100" id="">Đơn vị hành chính: </span>
             </div>
             <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" onchange="changeAdmisUnit();">
-              <option disabled selected value>Quốc gia</option>
+              <option disabled selected value="COUNTRY">Quốc gia</option>
             </select>
           </div>
           <div class="input-group mb-3">
@@ -209,7 +215,7 @@
     $('#unit_code-select-box')
     .find('option')
     .remove()
-    .end();
+    .end(); 
     
     $("#unit_code-select-box").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
     for (i = 0; i < admisUnitCountryCode.length; i++) {
@@ -235,5 +241,5 @@
       }
     }
   }
-
+ 
 </script>

@@ -39,7 +39,14 @@ class Controller extends WebController
         $unitNameOfDistrict = Apiato::call('Address@GetUnitNameOfDistrictFromAdmisUnitAction');
         $unitNameOfWard = Apiato::call('Address@GetUnitNameOfWardFromAdmisUnitAction');
 
-        return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard);
+        $allLeft = Apiato::call('Address@GetAllLeftAddrComponentAction');
+        $allRight = Apiato::call('Address@GetAllRightAddrComponentAction');
+        $allLevel = Apiato::call('Address@GetAllLevelAddrComponentAction');
+        $allCode = Apiato::call('Address@GetAllCodeAddrComponentAction');
+
+        $allName = Apiato::call('Address@GetAllAddrComponentNameAction');
+
+        return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard)->with('allLeft', $allLeft)->with('allRight', $allRight)->with('allLevel', $allLevel)->with('allCode', $allCode)->with('allName', $allName);
     }
 
     public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)

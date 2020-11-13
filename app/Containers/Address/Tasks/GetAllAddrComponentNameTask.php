@@ -5,7 +5,7 @@ namespace App\Containers\Address\Tasks;
 use App\Containers\Address\Data\Repositories\AddressComponentRepository;
 use App\Ship\Parents\Tasks\Task;
 
-class GetAllCountryNameFromAddressComponentTask extends Task
+class GetAllAddrComponentNameTask extends Task
 {
     protected $repository;
 
@@ -16,6 +16,6 @@ class GetAllCountryNameFromAddressComponentTask extends Task
 
     public function run()
     {
-        return $this->repository->where('address_component_unit_code','COUNTRY')->paginate();
+        return $this->repository->pluck('address_component_name');
     }
 }

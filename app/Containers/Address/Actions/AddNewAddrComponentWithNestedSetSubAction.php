@@ -15,7 +15,7 @@ class AddNewAddrComponentWithNestedSetSubAction extends SubAction
 
     	if($request->address_component_unit_level_hidden == 0){
     		$request->address_component_parent_uuid = null;
-            $request->address_component_unit_code = 'Quốc gia';
+            $request->address_component_unit_code = 'COUNTRY';
 
     		if($countAddrComp == 0){
 	    		$request->address_component_level_left = $maxRight+1;
