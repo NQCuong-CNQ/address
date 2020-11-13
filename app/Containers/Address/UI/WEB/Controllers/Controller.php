@@ -49,19 +49,19 @@ class Controller extends WebController
         return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard)->with('allLeft', $allLeft)->with('allRight', $allRight)->with('allLevel', $allLevel)->with('allCode', $allCode)->with('allName', $allName);
     }
 
-    public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)
+    public function addNewAdmistrativeUnit(AddNewAdmistrativeUnitRequest $request)
     {
         $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
         return redirect()->back();
     }
 
-    public function addNewAddressComponent(CreateAdmistrativeUnitRequest $request)
+    public function addNewAddressComponent(AddNewAddressComponentRequest $request)
     {
-        $addresses = Apiato::call('Address@addNewAddressComponentAction',[$request]);
+        $addresses = Apiato::call('Address@AddNewAddressComponentAction',[$request]);
         return redirect()->back();
     }
 
-    public function removeAddressComponent(CreateAdmistrativeUnitRequest $request)
+    public function removeAddressComponent(RemoveAddressComponentRequest $request)
     {
         $addresses = Apiato::call('Address@RemoveAddressComponentAction',[$request]);
         return redirect()->back();

@@ -88,8 +88,6 @@
 </table>
 </div>
 
-
-<!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -168,7 +166,6 @@
 
 </body>
 </html>
-<script src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
 
 <script type="text/javascript">
   var iRowCount = document.getElementById('table').rows.length -1;

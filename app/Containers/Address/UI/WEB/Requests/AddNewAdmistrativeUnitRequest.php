@@ -7,7 +7,7 @@ use App\Ship\Parents\Requests\Request;
 /**
  * Class CreateAddressRequest.
  */
-class CreateAdmistrativeUnitRequest extends Request
+class AddNewAdmistrativeUnitRequest extends Request
 {
 
     /**
