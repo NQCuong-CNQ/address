@@ -45,7 +45,7 @@
       <?php endforeach ;?>
     </select>
   </div>
-  <div id="cityBlock" class="input-group mb-3 pr-3" style="display: none;">
+  <div id="cityBlock" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
       <span class="input-group-text w-100" id="">{{$unitNameOfCity}}:</span>
     </div>
@@ -53,7 +53,7 @@
 
     </select>
   </div>
-  <div id="districtBlock" class="input-group mb-3 pr-3" style="display: none;">
+  <div id="districtBlock" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
       <span class="input-group-text w-100" id="">{{$unitNameOfDistrict}}: </span>
     </div>
@@ -61,7 +61,7 @@
 
     </select>
   </div>
-  <div id="wardBlock" class="input-group mb-3 pr-3" style="display: none;">
+  <div id="wardBlock" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
       <span class="input-group-text w-100" id="">{{$unitNameOfWard}}: </span>
     </div>
@@ -168,7 +168,7 @@
             $("#inputGroupCity").append(new Option(allName[i], allCode[i]));
           }
         }
-        document.getElementById('cityBlock').style.display = "flex";
+        document.getElementById('cityBlock').classList.remove("d-none");
         break;
       case 1:
         $('#inputGroupDistrict')
@@ -182,7 +182,7 @@
             $("#inputGroupDistrict").append(new Option(allName[i], allCode[i]));
           }
         }
-        document.getElementById('districtBlock').style.display = "flex";
+        document.getElementById('districtBlock').classList.remove("d-none");
         break;
       case 2:
         $('#inputGroupWard')
@@ -195,7 +195,7 @@
             $("#inputGroupWard").append(new Option(allName[i], allCode[i]));
           }
         }
-        document.getElementById('wardBlock').style.display = "flex"
+        document.getElementById('wardBlock').classList.remove("d-none");
         break;
     }
   }

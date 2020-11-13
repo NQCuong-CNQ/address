@@ -17,7 +17,13 @@ class AdmistrativeUnit extends Model
     'admistrative_unit_type',
     'admistrative_unit_status',
     'admistrative_unit_code',
-
+    'admistrative_unit_order',
+    'admistrative_unit_created_by_account_uuid',
+    'admistrative_unit_created_at',
+    'admistrative_unit_updated_by_account_uuid',
+    'admistrative_unit_updated_at',
+    'admistrative_unit_deleted_by_account_uuid',
+    'admistrative_unit_deleted_at',
   ];
 
   protected $attributes = [

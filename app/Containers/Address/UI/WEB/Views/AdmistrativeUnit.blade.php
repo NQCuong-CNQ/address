@@ -37,7 +37,7 @@
 <table id="table" class="table table-bordered ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Stt</th>
+      <th scope="col">Order</th>
       <th scope="col">Thuộc quốc gia</th>
       <th scope="col">Mã đơn vị hành chính</th>
       <th scope="col">Tên đơn vị hành chính</th>
@@ -170,4 +170,25 @@
 <script type="text/javascript">
   var iRowCount = document.getElementById('table').rows.length -1;
   document.getElementById('countTable').innerHTML = iRowCount;
+
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("table");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
 </script>

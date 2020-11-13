@@ -36,7 +36,7 @@
 <table id="table" class="table table-bordered ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Stt</th>
+      <th scope="col">Order</th>
       <th scope="col">Mã</th>
       <th scope="col">Tên</th>
       <th scope="col">Mã bưu chính</th>
@@ -51,7 +51,7 @@
     @if($addressComponent !=null)
     <?php foreach($addressComponent as $item) :?>
       <tr>
-        <th scope="row">{{$item->admistrative_unit_order}}</th>
+        <th scope="row">{{$item->address_component_order}}</th>
         <td>{{$item->address_component_code}}</td>
         <td>{{$item->address_component_name}}</td>
         <td>{{$item->address_component_post_code}}</td>
@@ -78,8 +78,6 @@
 </table>
 </div>
 
-
-<!-- Modal -->
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -241,5 +239,27 @@
       }
     }
   }
+
   
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("table");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+
 </script>
