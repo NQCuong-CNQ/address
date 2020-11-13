@@ -26,7 +26,7 @@ class AddNewAdmistrativeUnitTask extends Task
           'admistrative_unit_country_code'=> $request->admistrative_unit_country_code,
           'admistrative_unit_type'=>  $request->admistrative_unit_type,
           'admistrative_unit_status'=>  $request->admistrative_unit_status,
-          'admistrative_unit_order'=>  1,
+          'admistrative_unit_order'=>  '1',
           'admistrative_unit_code'=>  $request->admistrative_unit_code,
           // 'admistrative_unit_created_by_account_uuid'=>  ,
           // 'admistrative_unit_created_at'=>  ,
