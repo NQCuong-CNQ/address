@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Address Component</title>
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
   <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
   
@@ -189,58 +186,53 @@
     </div>
   </div>
 </div>
-
+<script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 
 <script type="text/javascript">
-  var allType;
   var iRowCount = document.getElementById('table').rows.length -1;
   document.getElementById('countTable').innerHTML = iRowCount;
 
   var admistrative_unit_address_component_level = <?php echo $admisUnitLevel ?>;
   var admistrative_unit_country_code = <?php echo $admisUnitCountryCode ?>;
   var admistrative_unit_type = <?php echo $admisUnitType ?>; 
+  var admistrative_unit_code = <?php echo $admisUnitCode ?>;
 
   function changeCountryName() {
     var selectBox = document.getElementById("CountryNameSelectedBox");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-    var admisUnitCountryCode = <?php echo $admisUnitCountryCode ?>;
-    var admisUnitCode = <?php echo $admisUnitCode ?>;
-    var admisUnitType = <?php echo $admisUnitType ?>;
-
+    
     $('#unit_code-select-box')
     .find('option')
     .remove()
     .end(); 
     
     $("#unit_code-select-box").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
-    for (i = 0; i < admisUnitCountryCode.length; i++) {
-      if(admisUnitCountryCode[i] == selectedValue){
-        $("#unit_code-select-box").append(new Option(admisUnitCode[i], admisUnitType[i]));
+    for (i = 0; i < admistrative_unit_country_code.length; i++) {
+      if(admistrative_unit_country_code[i] == selectedValue){
+        $("#unit_code-select-box").append(new Option(admistrative_unit_code[i], admistrative_unit_type[i]));
       }
     }
 
     document.getElementById('address_component_unit_country_code_hidden').value = selectedValue;
-    document.getElementById('address_component_unit_all_type_hidden').value = admisUnitType;
-    allType = admisUnitType;
+    document.getElementById('address_component_unit_all_type_hidden').value = admistrative_unit_type;
   }
 
   function changeAdmisUnit() { 
     var selectBox = document.getElementById("unit_code-select-box");
-    document.getElementById('address_component_unit_type_hidden').value = allType[selectBox.selectedIndex-1];
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    var countryCode = document.getElementById('address_component_unit_country_code_hidden').value;
 
-    var admisUnitType = document.getElementById('address_component_unit_all_type_hidden').value;
-    for (i = 0; i < admistrative_unit_country_code.length; i++) {
-      if(document.getElementById('address_component_unit_country_code_hidden').value == admistrative_unit_country_code[i] && allType[selectBox.selectedIndex-1] == admistrative_unit_type[i])
-      {
+    for (i = 0; i < admistrative_unit_type.length; i++) {
+      if(selectedValue.toLowerCase() == admistrative_unit_code[i] && countryCode == admistrative_unit_country_code[i]){
+        document.getElementById('address_component_unit_type_hidden').value = admistrative_unit_type[i];
         document.getElementById('address_component_unit_level_hidden').value = admistrative_unit_address_component_level[i];
       }
     }
   }
 
-  
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("table");
   switching = true;
@@ -257,7 +249,7 @@
       }
     }
     if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
       switching = true;
     }
   }
