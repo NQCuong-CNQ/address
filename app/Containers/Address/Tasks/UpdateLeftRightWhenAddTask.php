@@ -5,7 +5,7 @@ namespace App\Containers\Address\Tasks;
 use App\Containers\Address\Data\Repositories\AddressComponentRepository;
 use App\Ship\Parents\Tasks\Task;
 
-class UpdateLeftRightTask extends Task
+class UpdateLeftRightWhenAddTask extends Task
 {
     protected $repository;
 

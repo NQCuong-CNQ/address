@@ -61,7 +61,7 @@
         <td>{{$item->address_component_status}}</td>
         <td> 
           <div class="d-flex justify-content-center">
-            <a href="" class="pr-3"><i class="fas fa-trash-alt"></i></a> 
+            <a href="{{route('removeAddressComponent',['uuid'=> $item->address_component_uuid])}}" class="pr-3"><i class="fas fa-trash-alt"></i></a> 
             <a href=""><i class="fas fa-edit"></i></a>  
           </div>
         </td>

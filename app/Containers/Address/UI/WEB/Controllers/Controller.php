@@ -45,12 +45,18 @@ class Controller extends WebController
     public function addNewAdmistrativeUnit(CreateAdmistrativeUnitRequest $request)
     {
         $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
-        return redirect()->route('AdmistrativeUnit');
+        return redirect()->back();
     }
 
     public function addNewAddressComponent(CreateAdmistrativeUnitRequest $request)
     {
         $addresses = Apiato::call('Address@addNewAddressComponentAction',[$request]);
-        return redirect()->route('AddressComponent');
+        return redirect()->back();
+    }
+
+    public function removeAddressComponent(CreateAdmistrativeUnitRequest $request)
+    {
+        $addresses = Apiato::call('Address@RemoveAddressComponentAction',[$request]);
+        return redirect()->back();
     }
 }
