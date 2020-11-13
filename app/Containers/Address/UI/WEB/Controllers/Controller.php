@@ -17,7 +17,7 @@ class Controller extends WebController
         return view('address::AdmistrativeUnit')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent);
     }
 
-    public function getAddressComponent()
+    public function getAddressComponent() 
     {
         $addressComponent = Apiato::call('Address@GetAllAddressComponentAction');
         $admistrativeUnit = Apiato::call('Address@GetAllAdmistrativeUnitAction');

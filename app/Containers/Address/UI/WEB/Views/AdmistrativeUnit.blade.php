@@ -50,17 +50,24 @@
   <tbody>
     
     @if($admistrativeUnit !=null)
+    <?php
+      function getAddressComponentName($addressComponent, $itemAdmisUnit){
+        foreach($addressComponent as $itemAddressComponent){
+          if($itemAddressComponent->address_component_code == $itemAdmisUnit->admistrative_unit_country_code){
+            echo $itemAddressComponent->address_component_name;
+            return;
+          }
+        }echo "Chưa nhập bên Component ạ!";
+      }
+    ?>
+
     <?php foreach($admistrativeUnit as $itemAdmisUnit) :?>
       <tr>
         <td>{{$itemAdmisUnit->admistrative_unit_order}}</td>
-        
-        <?php foreach($addressComponent as $itemAddressComponent) :?>
-          @if($itemAddressComponent->address_component_code == $itemAdmisUnit->admistrative_unit_country_code)
-          <td>
-            {{$itemAddressComponent->address_component_name}}
-          </td>
-          @endif
-        <?php endforeach ;?>
+
+        <td>
+          <?php getAddressComponentName($addressComponent, $itemAdmisUnit);?>
+        </td>
         
         <td>{{$itemAdmisUnit->admistrative_unit_code}}</td>
         <td>{{$itemAdmisUnit->admistrative_unit_name}}</td>
