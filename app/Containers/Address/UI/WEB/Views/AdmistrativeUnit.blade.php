@@ -4,30 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admistrative Unit</title>
-  <!-- bootstrap -->
-  <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
 
-  <style type="text/css">
-    .input-group-prepend{
-      width: 30%;
-    }
-  </style>
+  <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
+  <link href="public/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body class="p-4">
-  <div>
+  <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
+  <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput')}}'">User Input</button>
 
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput')}}'">User Input</button>
-
-    <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
-      Danh sách đơn vị hành chính
-    </p>
-  </hr>
-  <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới</button>
-  </div>
+  <p class="title-text">
+    Danh sách đơn vị hành chính
+  </p>
+</hr>
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới</button>
+</div>
 </hr>
 <div class="d-flex">Tổng số đơn vị hành chính: <p class="pl-2" id="countTable"></p>  </div>
 </hr>
@@ -48,14 +41,14 @@
     
     @if($admistrativeUnit !=null)
     <?php
-      function getAddressComponentName($addressComponent, $itemAdmisUnit){
-        foreach($addressComponent as $itemAddressComponent){
-          if($itemAddressComponent->address_component_code == $itemAdmisUnit->admistrative_unit_country_code){
-            echo $itemAddressComponent->address_component_name;
-            return;
-          }
-        }echo "Chưa nhập bên Component ạ!";
-      }
+    function getAddressComponentName($addressComponent, $itemAdmisUnit){
+      foreach($addressComponent as $itemAddressComponent){
+        if($itemAddressComponent->address_component_code == $itemAdmisUnit->admistrative_unit_country_code){
+          echo $itemAddressComponent->address_component_name;
+          return;
+        }
+      }echo "Chưa nhập bên Component ạ!";
+    }
     ?>
 
     <?php foreach($admistrativeUnit as $itemAdmisUnit) :?>
@@ -162,31 +155,6 @@
 </div>
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/js/table.js"></script>
 </body>
 </html>
-
-<script type="text/javascript">
-  var iRowCount = document.getElementById('table').rows.length -1;
-  document.getElementById('countTable').innerHTML = iRowCount;
-
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("table");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[0];
-      y = rows[i + 1].getElementsByTagName("TD")[0];
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-</script>

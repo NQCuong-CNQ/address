@@ -4,25 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User Input</title>
-  <!-- bootstrap -->
-  <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
 
-  <style type="text/css">
-    .input-group-prepend{
-      width: 30%;
-    }
-  </style>
+  <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
+  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body class="p-4">
-  <div>
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
-    <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit')}}'">Admistrative Unit</button>
-
-    <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
-     Địa chỉ
-   </p>
+  <button class="btn btn-outline-primary" onclick="location.href='{{route('AddressComponent')}}'">Address Component</button>
+  <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit')}}'">Admistrative Unit</button>
+  <p class="title-text">Địa chỉ</p>
  </hr>
- <div class="w-100 " style="display: grid; grid-template-columns: auto auto;">
+ <div class="w-100 cus-input-group">
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
       <span class="input-group-text w-100" id="">Địa chỉ: </span>
@@ -110,91 +102,17 @@
   </div>
 </div>
 </div>
+
+<?php
+  echo "<script>var allCode = " . json_encode($allCode) . "; </script>";
+  echo "<script>var allLeft = " . json_encode($allLeft) . "; </script>";
+  echo "<script>var allRight = " . json_encode($allRight) . "; </script>";
+  echo "<script>var allLevel = " . json_encode($allLevel) . "; </script>";
+  echo "<script>var allName = " . json_encode($allName) . "; </script>";
+?>
+
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/js/UserInput.js"></script>
 </body>
 </html>
-
-<script type="text/javascript">
-  var allCode = <?php echo $allCode ?>;
-  var allLeft = <?php echo $allLeft ?>; 
-  var allRight = <?php echo $allRight ?>; 
-  var allLevel = <?php echo $allLevel ?>; 
-  var allName = <?php echo $allName ?>; 
-
-  function changeSelectOption($level) {
-
-    var selectBox = "";
-    switch($level) {
-      case 0:
-      var selectBox = document.getElementById("inputGroupCountry");
-      break;
-      case 1:
-      var selectBox = document.getElementById("inputGroupCity");
-      break;
-      case 2:
-      var selectBox = document.getElementById("inputGroupDistrict");
-      break;
-    }
-
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-    document.getElementById('address_component_code_hidden').value = selectedValue;
-    document.getElementById('address_component_right_hidden').value = allRight;
-
-    for (i = 0; i < allCode.length; i++) {
-      if(allCode[i] == selectedValue){
-        document.getElementById('address_component_left_hidden').value = allLeft[i];
-        document.getElementById('address_component_right_hidden').value = allRight[i];
-        document.getElementById('address_component_level_hidden').value = allLevel[i];
-      }
-    }
-
-    var left = document.getElementById('address_component_left_hidden').value;
-    var right = document.getElementById('address_component_right_hidden').value;
-    var level = parseInt(document.getElementById('address_component_level_hidden').value);
-
-    switch($level) {
-      case 0:
-        $('#inputGroupCity')
-        .find('option')
-        .remove()
-        .end(); 
-        $("#inputGroupCity").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
-        for (i = 0; i < allCode.length; i++) {
-          if(allLevel[i] == (level+1) && allLeft[i] > left  && allRight[i] < right){
-            $("#inputGroupCity").append(new Option(allName[i], allCode[i]));
-          }
-        }
-        document.getElementById('cityBlock').classList.remove("d-none");
-        break;
-      case 1:
-        $('#inputGroupDistrict')
-        .find('option')
-        .remove()
-        .end(); 
-        $("#inputGroupDistrict").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
-
-        for (i = 0; i < allCode.length; i++) {
-          if(allLevel[i] == (level+1) && allLeft[i] > left  && allRight[i] < right){
-            $("#inputGroupDistrict").append(new Option(allName[i], allCode[i]));
-          }
-        }
-        document.getElementById('districtBlock').classList.remove("d-none");
-        break;
-      case 2:
-        $('#inputGroupWard')
-        .find('option')
-        .remove()
-        .end(); 
-        $("#inputGroupWard").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
-        for (i = 0; i < allCode.length; i++) {
-          if(allLevel[i] == (level+1) && allLeft[i] > left  && allRight[i] < right){
-            $("#inputGroupWard").append(new Option(allName[i], allCode[i]));
-          }
-        }
-        document.getElementById('wardBlock').classList.remove("d-none");
-        break;
-    }
-  }
-</script>

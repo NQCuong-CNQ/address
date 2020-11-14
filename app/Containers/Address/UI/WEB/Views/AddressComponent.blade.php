@@ -4,25 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Address Component</title>
-  <!-- bootstrap -->
+
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
-  <!-- fontawesome -->
-  <script src="https://kit.fontawesome.com/3b420fbe16.js" crossorigin="anonymous"></script>
-  
-  <style type="text/css">
-    .input-group-prepend{
-      width: 30%;
-    }
-  </style>
+  <link href="public/fontawesome/css/all.min.css" rel="stylesheet">
+  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body class="p-4">
   <div>
     <button class="btn btn-outline-primary" onclick="location.href='{{route('AdmistrativeUnit')}}'">Admistrative Unit</button>
     <button class="btn btn-outline-primary" onclick="location.href='{{route('UserInput')}}'">User Input</button>
 
-    <p style="text-transform: uppercase; font-size: 1.2em; font-weight: bold; padding-top: 1rem;">
-      Danh sách cấu thành địa chỉ
-    </p>
+    <p class="title-text">Danh sách cấu thành địa chỉ</p>
   </hr>
   <div class="d-flex justify-content-end">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới cấu thành địa chỉ</button>
@@ -57,7 +50,7 @@
 
         <?php foreach($admistrativeUnit as $itemAdmis) :?>
           @if(strtoupper($itemAdmis->admistrative_unit_code) == $item->address_component_unit_code && $itemAdmis->admistrative_unit_country_code == $item->address_component_country_code)
-          <td>{{$itemAdmis->admistrative_unit_name}}</td>
+            <td>{{$itemAdmis->admistrative_unit_name}}</td>
           @endif
         <?php endforeach ;?>
 
@@ -186,72 +179,18 @@
     </div>
   </div>
 </div>
+
+<?php
+echo "<script>var admistrative_unit_address_component_level = " . json_encode($admisUnitLevel) . "; </script>";
+echo "<script>var admistrative_unit_country_code = " . json_encode($admisUnitCountryCode) . "; </script>";
+echo "<script>var admistrative_unit_type = " . json_encode($admisUnitType) . "; </script>";
+echo "<script>var admistrative_unit_code = " . json_encode($admisUnitCode) . "; </script>";
+?>
+
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="public/js/AddressComponent.js"></script>
+<script src="public/js/table.js"></script>
 </body>
 </html>
-
-<script type="text/javascript">
-  var iRowCount = document.getElementById('table').rows.length -1;
-  document.getElementById('countTable').innerHTML = iRowCount;
-
-  var admistrative_unit_address_component_level = <?php echo $admisUnitLevel ?>;
-  var admistrative_unit_country_code = <?php echo $admisUnitCountryCode ?>;
-  var admistrative_unit_type = <?php echo $admisUnitType ?>; 
-  var admistrative_unit_code = <?php echo $admisUnitCode ?>;
-
-  function changeCountryName() {
-    var selectBox = document.getElementById("CountryNameSelectedBox");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    
-    $('#unit_code-select-box')
-    .find('option')
-    .remove()
-    .end(); 
-    
-    $("#unit_code-select-box").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
-    for (i = 0; i < admistrative_unit_country_code.length; i++) {
-      if(admistrative_unit_country_code[i] == selectedValue){
-        $("#unit_code-select-box").append(new Option(admistrative_unit_code[i], admistrative_unit_type[i]));
-      }
-    }
-
-    document.getElementById('address_component_unit_country_code_hidden').value = selectedValue;
-    document.getElementById('address_component_unit_all_type_hidden').value = admistrative_unit_type;
-  }
-
-  function changeAdmisUnit() { 
-    var selectBox = document.getElementById("unit_code-select-box");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    var countryCode = document.getElementById('address_component_unit_country_code_hidden').value;
-
-    for (i = 0; i < admistrative_unit_type.length; i++) {
-      if(selectedValue.toLowerCase() == admistrative_unit_code[i] && countryCode == admistrative_unit_country_code[i]){
-        document.getElementById('address_component_unit_type_hidden').value = admistrative_unit_type[i];
-        document.getElementById('address_component_unit_level_hidden').value = admistrative_unit_address_component_level[i];
-      }
-    }
-  }
-
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("table");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[0];
-      y = rows[i + 1].getElementsByTagName("TD")[0];
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
-      switching = true;
-    }
-  }
-
-</script>

@@ -44,7 +44,6 @@ class Controller extends WebController
         $allRight = Apiato::call('Address@GetAllRightAddrComponentAction');
         $allLevel = Apiato::call('Address@GetAllLevelAddrComponentAction');
         $allCode = Apiato::call('Address@GetAllCodeAddrComponentAction');
-
         $allName = Apiato::call('Address@GetAllAddrComponentNameAction');
 
         return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard)->with('allLeft', $allLeft)->with('allRight', $allRight)->with('allLevel', $allLevel)->with('allCode', $allCode)->with('allName', $allName);

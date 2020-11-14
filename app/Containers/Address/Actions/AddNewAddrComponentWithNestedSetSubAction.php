@@ -51,7 +51,6 @@ class AddNewAddrComponentWithNestedSetSubAction extends SubAction
     	}
         $request->address_component_unit_level = $request->address_component_level;
 
-        $data = Apiato::call('Address@AddNewAddressComponentTask',[$request]);
-        return $data;
+        Apiato::call('Address@AddNewAddressComponentTask',[$request]);
     }
 }
