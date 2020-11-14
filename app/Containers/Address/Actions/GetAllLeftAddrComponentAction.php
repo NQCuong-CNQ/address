@@ -3,7 +3,6 @@
 namespace App\Containers\Address\Actions;
 
 use App\Ship\Parents\Actions\Action;
-use App\Ship\Parents\Requests\Request;
 use Apiato\Core\Foundation\Facades\Apiato;
 
 class GetAllLeftAddrComponentAction extends Action

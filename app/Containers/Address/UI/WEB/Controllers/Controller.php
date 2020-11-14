@@ -7,7 +7,6 @@ use App\Ship\Parents\Controllers\WebController;
 use Apiato\Core\Foundation\Facades\Apiato;
 use App\Containers\Address\UI\WEB\Requests\AddNewAdmistrativeUnitRequest;
 use App\Containers\Address\UI\WEB\Requests\AddNewAddressComponentRequest;
-use App\Containers\Address\UI\WEB\Requests\RemoveAddressComponentRequest;
 
 class Controller extends WebController
 {
@@ -51,19 +50,25 @@ class Controller extends WebController
 
     public function addNewAdmistrativeUnit(AddNewAdmistrativeUnitRequest $request)
     {
-        $addresses = Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
+        Apiato::call('Address@AddNewAdmistrativeUnitAction',[$request]);
         return redirect()->back();
     }
 
     public function addNewAddressComponent(AddNewAddressComponentRequest $request)
     {
-        $addresses = Apiato::call('Address@AddNewAddressComponentAction',[$request]);
+        Apiato::call('Address@AddNewAddressComponentAction',[$request]);
         return redirect()->back();
     }
 
-    public function removeAddressComponent(RemoveAddressComponentRequest $request)
+    public function removeAddressComponent($uuid)
     {
-        $addresses = Apiato::call('Address@RemoveAddressComponentAction',[$request]);
+        Apiato::call('Address@RemoveAddressComponentAction',[$uuid]);
+        return redirect()->back();
+    }
+
+    public function removeAdmisUnit($uuid)
+    {
+        Apiato::call('Address@removeAdmisUnitAction',[$uuid]);
         return redirect()->back();
     }
 }

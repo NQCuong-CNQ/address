@@ -66,7 +66,7 @@
         <td>{{$itemAdmisUnit->admistrative_unit_status}}</td>
         <td> 
           <div class="d-flex justify-content-center">
-            <a href="" class="pr-3"><i class="fas fa-trash-alt"></i></a> 
+            <a href="{{route('removeAdmisUnit',['uuid'=> $itemAdmisUnit->admistrative_unit_uuid])}}" class="pr-3"><i class="fas fa-trash-alt"></i></a> 
             <a href=""><i class="fas fa-edit"></i></a>  
           </div>
         </td>

@@ -15,9 +15,9 @@ class RemoveAddressComponentTask extends Task
         $this->repository = $repository;
     }
 
-    public function run($request)
+    public function run($uuid)
     {
-    	$currentNode = $this->repository->where('address_component_uuid',$request->uuid)->first();
+    	$currentNode = $this->repository->where('address_component_uuid',$uuid)->first();
     	$size = ($currentNode->address_component_level_right - $currentNode->address_component_level_left) +1;
         $this->repository->where('address_component_level_left', '>=', $currentNode->address_component_level_left)->where('address_component_level_right', '<=', $currentNode->address_component_level_right)->delete();
         $this->repository->where('address_component_level_right', '>=', $currentNode->address_component_level_right)->increment('address_component_level_right', -($size));

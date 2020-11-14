@@ -11,3 +11,5 @@ $router->post('addNewAdmistrativeUnit','Controller@addNewAdmistrativeUnit')->nam
 $router->post('addNewAddressComponent','Controller@addNewAddressComponent')->name('addNewAddressComponent');
 
 $router->get('removeAddressComponent/{uuid}','Controller@removeAddressComponent')->name('removeAddressComponent');
+
+$router->get('removeAdmisUnit/{uuid}','Controller@removeAdmisUnit')->name('removeAdmisUnit');

@@ -18,13 +18,13 @@ function changeCountryName() {
 	document.getElementById('address_component_unit_all_type_hidden').value = admistrative_unit_type;
 }
 
-function changeAdmisUnit() { 
+function changeAdmisUnit() {
 	var selectBox = document.getElementById("unit_code-select-box");
 	var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	var countryCode = document.getElementById('address_component_unit_country_code_hidden').value;
 
 	for (i = 0; i < admistrative_unit_type.length; i++) {
-		if(selectedValue.toLowerCase() == admistrative_unit_code[i] && countryCode == admistrative_unit_country_code[i]){
+		if(selectedValue == admistrative_unit_code[i] && countryCode == admistrative_unit_country_code[i]){
 			document.getElementById('address_component_unit_type_hidden').value = admistrative_unit_type[i];
 			document.getElementById('address_component_unit_level_hidden').value = admistrative_unit_address_component_level[i];
 		}

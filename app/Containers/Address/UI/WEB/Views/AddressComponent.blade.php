@@ -49,7 +49,7 @@
         <td>{{$item->address_component_zip_code}}</td>
 
         <?php foreach($admistrativeUnit as $itemAdmis) :?>
-          @if(strtoupper($itemAdmis->admistrative_unit_code) == $item->address_component_unit_code && $itemAdmis->admistrative_unit_country_code == $item->address_component_country_code)
+          @if($itemAdmis->admistrative_unit_code == $item->address_component_unit_code && $itemAdmis->admistrative_unit_country_code == $item->address_component_country_code)
             <td>{{$itemAdmis->admistrative_unit_name}}</td>
           @endif
         <?php endforeach ;?>
@@ -146,25 +146,25 @@
               <option value="0">Vô hiệu</option>
             </select>
           </div>
-          <div class="input-group mb-3 d-none">
+          <div class="input-group mb-3 ">
             <div class="input-group-prepend" >
               <span class="input-group-text w-100" id="">country_code: </span>
             </div>
             <input id="address_component_unit_country_code_hidden" name="address_component_unit_country_code_hidden" type="text" class="form-control" placeholder="" value="">
           </div>
-          <div class="input-group mb-3 d-none">
+          <div class="input-group mb-3 ">
             <div class="input-group-prepend" >
               <span class="input-group-text w-100" id="">all type: </span>
             </div>
             <input id="address_component_unit_all_type_hidden" name="address_component_unit_all_type_hidden" type="text" class="form-control" placeholder="" value="">
           </div>
-          <div class="input-group mb-3 d-none">
+          <div class="input-group mb-3 ">
             <div class="input-group-prepend" >
               <span class="input-group-text w-100" id="">type: </span>
             </div>
             <input id="address_component_unit_type_hidden" name="address_component_unit_type_hidden" type="text" class="form-control" placeholder="" value="">
           </div>
-          <div class="input-group mb-3 d-none">
+          <div class="input-group mb-3 ">
             <div class="input-group-prepend" >
               <span class="input-group-text w-100" id="">level: </span>
             </div>
