@@ -17,6 +17,6 @@ class GetAllAdmistrativeUnitTask extends Task
 
     public function run()
     {
-        return $this->repository->paginate();
+        return $this->repository->orderBy('admistrative_unit_order', 'asc')->get();
     }
 }

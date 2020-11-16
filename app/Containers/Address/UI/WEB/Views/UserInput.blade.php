@@ -6,7 +6,7 @@
   <title>User Input</title>
 
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
-  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+  <link href="public/css/custom-input.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body class="p-4">
@@ -17,98 +17,104 @@
  <div class="w-100 cus-input-group">
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">Địa chỉ: </span>
+      <span class="input-group-text w-100">Địa chỉ: </span>
     </div>
-    <input type="text" class="form-control" placeholder="" aria-label="Username">
+    <input type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">{{$unitNameOfCountry}}:</span>
+      <span class="input-group-text w-100">Quốc gia: </span>
     </div>
-    <select class="custom-select" id="inputGroupCountry" onchange="changeSelectOption(0);">
+    <select class="custom-select" id="input-level-0" onchange="changeSelectOption(0);">
       <option disabled selected value> -- select an option -- </option>
-      <?php foreach($allCountryName as $itemCountryName) :?>
+      <?php foreach($addressComponent as $itemAddr) :?>
+        @if($itemAddr->address_component_unit_level == 0)
         <td>
-          <option value="{{$itemCountryName->address_component_code}}">{{$itemCountryName->address_component_name}}</option>
+          <option value="{{$itemAddr->address_component_country_code}}">{{$itemAddr->address_component_name}}</option>
         </td>
+        @endif
       <?php endforeach ;?>
     </select>
   </div>
-  <div id="cityBlock" class="input-group mb-3 pr-3 d-none">
+  <div id="level-1-container" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">{{$unitNameOfCity}}:</span>
+      <span id="title-level-1" class="input-group-text w-100"></span>
     </div>
-    <select class="custom-select" id="inputGroupCity" onchange="changeSelectOption(1);">
+    <select class="custom-select" id="input-level-1" onchange="changeSelectOption(1);">
 
     </select>
   </div>
-  <div id="districtBlock" class="input-group mb-3 pr-3 d-none">
+  <div id="level-2-container" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">{{$unitNameOfDistrict}}: </span>
+      <span id="title-level-2" class="input-group-text w-100"></span>
     </div>
-    <select class="custom-select" id="inputGroupDistrict" onchange="changeSelectOption(2);">
+    <select class="custom-select" id="input-level-2" onchange="changeSelectOption(2);">
 
     </select>
   </div>
-  <div id="wardBlock" class="input-group mb-3 pr-3 d-none">
+  <div id="level-3-container" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">{{$unitNameOfWard}}: </span>
+      <span id="title-level-3" class="input-group-text w-100"></span>
     </div>
-    <select class="custom-select" id="inputGroupWard">
+    <select class="custom-select" id="input-level-3">
 
     </select>
   </div>
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">Nhân viên quản lý: </span>
+      <span class="input-group-text w-100">Nhân viên quản lý: </span>
     </div>
-    <input type="text" class="form-control" placeholder="" aria-label="Username">
+    <input type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">Mã số thuế: </span>
+      <span class="input-group-text w-100">Mã số thuế: </span>
     </div>
-    <input type="text" class="form-control" placeholder="" aria-label="Username">
+    <input type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">Số fax: </span>
+      <span class="input-group-text w-100">Số fax: </span>
     </div>
-    <input type="text" class="form-control" placeholder="" aria-label="Username">
+    <input type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">Code: </span>
+      <span class="input-group-text w-100">Code: </span>
     </div>
-    <input id="address_component_code_hidden" type="text" class="form-control" placeholder="" aria-label="Username">
+    <input id="address_component_code_hidden" type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">left: </span>
+      <span class="input-group-text w-100">left: </span>
     </div>
-    <input id="address_component_left_hidden" type="text" class="form-control" placeholder="" aria-label="Username">
+    <input id="address_component_left_hidden" type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">right: </span>
+      <span class="input-group-text w-100">right: </span>
     </div>
-    <input id="address_component_right_hidden" type="text" class="form-control" placeholder="" aria-label="Username">
+    <input id="address_component_right_hidden" type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
-      <span class="input-group-text w-100" id="">level: </span>
+      <span class="input-group-text w-100">level: </span>
     </div>
-    <input id="address_component_level_hidden" type="text" class="form-control" placeholder="" aria-label="Username">
+    <input id="address_component_level_hidden" type="text" class="form-control">
   </div>
 </div>
 </div>
 
 <?php
-  echo "<script>var allCode = " . json_encode($allCode) . "; </script>";
-  echo "<script>var allLeft = " . json_encode($allLeft) . "; </script>";
-  echo "<script>var allRight = " . json_encode($allRight) . "; </script>";
-  echo "<script>var allLevel = " . json_encode($allLevel) . "; </script>";
-  echo "<script>var allName = " . json_encode($allName) . "; </script>";
+  echo "<script>var address_component_code = " . json_encode(array_column($addrComponentArray, "address_component_code")) . "; </script>";
+  echo "<script>var address_component_level_left = " . json_encode(array_column($addrComponentArray, "address_component_level_left")) . "; </script>";
+  echo "<script>var address_component_level_right = " . json_encode(array_column($addrComponentArray, "address_component_level_right")) . "; </script>";
+  echo "<script>var address_component_level = " . json_encode(array_column($addrComponentArray, "address_component_level")) . "; </script>";
+  echo "<script>var address_component_name = " . json_encode(array_column($addrComponentArray, "address_component_name")) . "; </script>";
+
+  echo "<script>var admistrative_unit_name = " . json_encode(array_column($admisUnitArray, "admistrative_unit_name")) . "; </script>";
+  echo "<script>var admistrative_unit_country_code = " . json_encode(array_column($admisUnitArray, "admistrative_unit_country_code")) . "; </script>";
+  echo "<script>var admistrative_unit_address_component_level = " . json_encode(array_column($admisUnitArray, "admistrative_unit_address_component_level")) . "; </script>";
 ?>
 
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>

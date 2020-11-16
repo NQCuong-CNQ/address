@@ -5,9 +5,8 @@ namespace App\Containers\Address\Tasks;
 use App\Containers\Address\Data\Repositories\AdmistrativeUnitRepository;
 use App\Ship\Parents\Tasks\Task;
 
-class GetAllAdmisUnitCodeTask extends Task
+class GetAllAdmisUnitArrayTask extends Task
 {
-
     protected $repository;
 
     public function __construct(AdmistrativeUnitRepository $repository)
@@ -17,6 +16,12 @@ class GetAllAdmisUnitCodeTask extends Task
 
     public function run()
     {
-        return $this->repository->pluck('admistrative_unit_code');
+        $admisUnit = $this->repository->get();
+        $admisUnitArray = array();
+        
+        foreach ($admisUnit as $item) {
+        	$admisUnitArray[] = $item;
+        }
+        return $admisUnitArray;
     }
 }

@@ -27,11 +27,10 @@ class AddNewAddrComponentWithNestedSetSubAction extends SubAction
             $request->address_component_level = $request->address_component_unit_level_hidden;
             $request->address_component_country_code = $request->address_component_code;
     	}
-
     	if($request->address_component_unit_level_hidden > 0){
 
             $parentUUID = Apiato::call('Address@GetParentUUIDTask', [$request->address_component_unit_level_hidden, $request->address_component_unit_country_code_hidden, $request->address_component_code]);
-
+            echo $parentUUID;
     		$request->address_component_parent_uuid = $parentUUID;
             // 2. lay right cha
             $parentRight = Apiato::call('Address@GetParentRightTask', [$parentUUID]);
@@ -50,7 +49,6 @@ class AddNewAddrComponentWithNestedSetSubAction extends SubAction
             $request->address_component_country_code = $request->address_component_unit_country_code_hidden;
     	}
         $request->address_component_unit_level = $request->address_component_level;
-
         Apiato::call('Address@AddNewAddressComponentTask',[$request]);
     }
 }

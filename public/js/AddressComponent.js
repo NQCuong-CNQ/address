@@ -10,7 +10,7 @@ function changeCountryName() {
 	$("#unit_code-select-box").append("<option disabled='disabled' SELECTED> -- select an option -- </option>");
 	for (i = 0; i < admistrative_unit_country_code.length; i++) {
 		if(admistrative_unit_country_code[i] == selectedValue){
-			$("#unit_code-select-box").append(new Option(admistrative_unit_code[i], admistrative_unit_type[i]));
+			$("#unit_code-select-box").append(new Option(admistrative_unit_name[i], admistrative_unit_code[i]));
 		}
 	}
 

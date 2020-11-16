@@ -17,6 +17,6 @@ class GetAllAddressComponentTask extends Task
 
     public function run()
     {
-        return $this->repository->paginate();
+        return $this->repository->orderBy('address_component_order', 'asc')->get();
     }
 }

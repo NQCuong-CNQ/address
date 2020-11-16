@@ -10,6 +10,7 @@ class AddressComponent extends Model
     public $timestamps=false;
     
     protected $fillable = [
+          'address_component_id',
           'address_component_uuid',
           'address_component_name',
           'address_component_code',

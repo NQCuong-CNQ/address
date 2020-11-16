@@ -10,6 +10,7 @@ class AdmistrativeUnit extends Model
   public $timestamps=false;
 
   protected $fillable = [
+    'admistrative_unit_id',
     'admistrative_unit_uuid',
     'admistrative_unit_name',
     'admistrative_unit_address_component_level',

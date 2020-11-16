@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Containers\Address\UI\WEB\Controllers;
-
 
 use App\Ship\Parents\Controllers\WebController;
 use Apiato\Core\Foundation\Facades\Apiato;
@@ -14,6 +12,7 @@ class Controller extends WebController
     {
         $addressComponent = Apiato::call('Address@GetAllAddressComponentAction');
         $admistrativeUnit = Apiato::call('Address@GetAllAdmistrativeUnitAction');
+
         return view('address::AdmistrativeUnit')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent);
     }
 
@@ -21,31 +20,18 @@ class Controller extends WebController
     {
         $addressComponent = Apiato::call('Address@GetAllAddressComponentAction');
         $admistrativeUnit = Apiato::call('Address@GetAllAdmistrativeUnitAction');
-        $admisUnitCountryCode = Apiato::call('Address@GetAllAdmisUnitCountryCodeAction');
-        $admisUnitCode = Apiato::call('Address@GetAllAdmisUnitCodeAction');
-        $admisUnitType = Apiato::call('Address@GetAllAdmisUnitTypeAction');
-        $allCountryName = Apiato::call('Address@GetAllCountryNameFromAddressComponentAction');
-        $admisUnitLevel = Apiato::call('Address@GetAllAdmisUnitLevelAction');
+        $admisUnitArray = Apiato::call('Address@GetAllAdmisUnitArrayAction');
         
-        return view('address::AddressComponent')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent)->with('allCountryName', $allCountryName)->with('admisUnitCountryCode', $admisUnitCountryCode)->with('admisUnitCode', $admisUnitCode)->with('admisUnitType', $admisUnitType)->with('admisUnitLevel', $admisUnitLevel);
+        return view('address::AddressComponent')->with('admistrativeUnit', $admistrativeUnit)->with('addressComponent', $addressComponent)->with('admisUnitArray', $admisUnitArray);
     }
 
     public function getUserInput()
     {
-        $allCountryName = Apiato::call('Address@GetAllCountryNameFromAddressComponentAction');
+        $addressComponent = Apiato::call('Address@GetAllAddressComponentAction');
+        $addrComponentArray = Apiato::call('Address@GetAllAddrComponentArrayAction');
+        $admisUnitArray = Apiato::call('Address@GetAllAdmisUnitArrayAction');
 
-        $unitNameOfCountry = Apiato::call('Address@GetUnitNameOfCountryFromAdmisUnitAction');
-        $unitNameOfCity = Apiato::call('Address@GetUnitNameOfCityFromAdmisUnitAction');
-        $unitNameOfDistrict = Apiato::call('Address@GetUnitNameOfDistrictFromAdmisUnitAction');
-        $unitNameOfWard = Apiato::call('Address@GetUnitNameOfWardFromAdmisUnitAction');
-
-        $allLeft = Apiato::call('Address@GetAllLeftAddrComponentAction');
-        $allRight = Apiato::call('Address@GetAllRightAddrComponentAction');
-        $allLevel = Apiato::call('Address@GetAllLevelAddrComponentAction');
-        $allCode = Apiato::call('Address@GetAllCodeAddrComponentAction');
-        $allName = Apiato::call('Address@GetAllAddrComponentNameAction');
-
-        return view('address::UserInput')->with('allCountryName', $allCountryName)->with('unitNameOfCountry', $unitNameOfCountry)->with('unitNameOfCity', $unitNameOfCity)->with('unitNameOfDistrict', $unitNameOfDistrict)->with('unitNameOfWard', $unitNameOfWard)->with('allLeft', $allLeft)->with('allRight', $allRight)->with('allLevel', $allLevel)->with('allCode', $allCode)->with('allName', $allName);
+        return view('address::UserInput')->with('addressComponent', $addressComponent)->with('addrComponentArray', $addrComponentArray)->with('admisUnitArray', $admisUnitArray);
     }
 
     public function addNewAdmistrativeUnit(AddNewAdmistrativeUnitRequest $request)

@@ -5,7 +5,7 @@ namespace App\Containers\Address\Tasks;
 use App\Containers\Address\Data\Repositories\AddressComponentRepository;
 use App\Ship\Parents\Tasks\Task;
 
-class GetAllCodeAddrComponentTask extends Task
+class GetAllAddrComponentArrayTask extends Task
 {
 
     protected $repository;
@@ -17,6 +17,12 @@ class GetAllCodeAddrComponentTask extends Task
 
     public function run()
     {
-        return $this->repository->pluck('address_component_code');
+        $addrComponent = $this->repository->get();
+        $addrComponentArray = array();
+        
+        foreach ($addrComponent as $item) {
+        	$addrComponentArray[] = $item;
+        }
+        return $addrComponentArray;
     }
 }

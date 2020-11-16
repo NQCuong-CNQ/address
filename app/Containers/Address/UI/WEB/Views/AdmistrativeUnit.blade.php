@@ -7,7 +7,8 @@
 
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
   <link href="public/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+  <link href="public/css/custom-input.css" type="text/css" rel="stylesheet" />
+  <link href="public/table/datatables.min.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body class="p-4">
@@ -18,12 +19,10 @@
     Danh sách đơn vị hành chính
   </p>
 </hr>
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mb-3">
   <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới</button>
 </div>
-</hr>
-<div class="d-flex">Tổng số đơn vị hành chính: <p class="pl-2" id="countTable"></p>  </div>
-</hr>
+
 <table id="table" class="table table-bordered ">
   <thead class="thead-light">
     <tr>
@@ -92,27 +91,27 @@
         <div class="modal-body">
           <div class="input-group mb-3" >
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Tên đơn vị hành chính: </span>
+              <span class="input-group-text w-100">Tên đơn vị hành chính: </span>
             </div>
-            <input name="admistrative_unit_name" type="text" class="form-control" placeholder="" >
+            <input name="admistrative_unit_name" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Mã đơn vị hành chính: </span>
+              <span class="input-group-text w-100">Mã đơn vị hành chính: </span>
             </div>
-            <input name="admistrative_unit_code" type="text" class="form-control" placeholder="" >
+            <input name="admistrative_unit_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Mã quốc gia: </span>
+              <span class="input-group-text w-100">Mã quốc gia: </span>
             </div>
-            <input name="admistrative_unit_country_code" type="text" class="form-control" placeholder="" >
+            <input name="admistrative_unit_country_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Loại đơn vị hành chính: </span>
+              <span class="input-group-text w-100">Loại đơn vị hành chính: </span>
             </div>
-            <select name="admistrative_unit_type" class="custom-select" id="">
+            <select name="admistrative_unit_type" class="custom-select">
               <option selected value="1">COUNTRY</option>
               <option value="2">PROVINCE</option>
               <option value="3">CITY</option>
@@ -124,21 +123,21 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Cấp bậc đơn vị hành chính: </span>
+              <span class="input-group-text w-100">Cấp bậc đơn vị hành chính: </span>
             </div>
-            <input name="admistrative_unit_address_component_level" type="text" class="form-control" placeholder="" >
+            <input name="admistrative_unit_address_component_level" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
+              <span class="input-group-text w-100">Thứ tự sắp xếp: </span>
             </div>
-            <input name="admistrative_unit_order" type="text" class="form-control" placeholder="" >
+            <input name="admistrative_unit_order" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text w-100" id="">Trạng thái: </span>
+              <span class="input-group-text w-100">Trạng thái: </span>
             </div>
-            <select name="admistrative_unit_status" class="custom-select" id="">
+            <select name="admistrative_unit_status" class="custom-select">
               <option selected value="1">Kích hoạt</option>
               <option value="0">Vô hiệu</option>
             </select>
@@ -153,8 +152,14 @@
     </div>
   </div>
 </div>
+
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
-<script src="public/js/table.js"></script>
+<script type="text/javascript" src="public/table/datatables.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('#table').DataTable();
+  });
+</script>
 </body>
 </html>

@@ -7,7 +7,8 @@
 
   <link href="public/bootstrap/css/bootstrap.css" rel="stylesheet" />
   <link href="public/fontawesome/css/all.min.css" rel="stylesheet">
-  <link href="public/css/table.css" type="text/css" rel="stylesheet" />
+  <link href="public/css/custom-input.css" type="text/css" rel="stylesheet" />
+  <link href="public/table/datatables.min.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body class="p-4">
@@ -17,12 +18,10 @@
 
     <p class="title-text">Danh sách cấu thành địa chỉ</p>
   </hr>
-  <div class="d-flex justify-content-end">
+  <div class="d-flex justify-content-end mb-3">
     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Thêm mới cấu thành địa chỉ</button>
   </div>
-</hr>
-<div class="d-flex">Tổng: <p class="pl-2" id="countTable"></p> </div>
-</hr>
+
 <table id="table" class="table table-bordered ">
   <thead class="thead-light">
     <tr>
@@ -41,7 +40,7 @@
     @if($addressComponent !=null)
     <?php foreach($addressComponent as $item) :?>
       <tr>
-        <th scope="row">{{$item->address_component_order}}</th>
+        <td>{{$item->address_component_order}}</td>
         <td>{{$item->address_component_code}}</td>
         <td>{{$item->address_component_name}}</td>
         <td>{{$item->address_component_post_code}}</td>
@@ -64,6 +63,7 @@
       </tr>
     <?php endforeach ;?>
     @endif
+
   </tbody>
 </table>
 </div>
@@ -82,20 +82,24 @@
         <div class="modal-body">
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Quốc gia: </span>
+              <span class="input-group-text w-100">Quốc gia: </span>
             </div>
             <select name="" class="custom-select" id="CountryNameSelectedBox" onchange="changeCountryName();">
               <option disabled selected value> -- select an option -- </option>
-              <?php foreach($allCountryName as $itemCountryName) :?>
+
+              <?php foreach ($addressComponent as $itemAddr) { ?>
+                @if($itemAddr->address_component_unit_level == 0)
                 <td>
-                  <option value="{{$itemCountryName->address_component_code}}">{{$itemCountryName->address_component_name}}</option>
+                  <option value="{{$itemAddr->address_component_code}}">{{$itemAddr->address_component_name}}</option>
                 </td>
-              <?php endforeach ;?>
+                @endif
+              <?php } ?>
+
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Đơn vị hành chính: </span>
+              <span class="input-group-text w-100">Đơn vị hành chính: </span>
             </div>
             <select id="unit_code-select-box" name="address_component_unit_code" class="custom-select" onchange="changeAdmisUnit();">
               <option disabled selected value="COUNTRY">Quốc gia</option>
@@ -103,72 +107,72 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Mã: </span>
+              <span class="input-group-text w-100">Mã: </span>
             </div>
-            <input name="address_component_code" type="text" class="form-control" placeholder="">
+            <input name="address_component_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Tên: </span>
+              <span class="input-group-text w-100">Tên: </span>
             </div>
-            <input name="address_component_name" type="text" class="form-control" placeholder="">
+            <input name="address_component_name" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Mã bưu chính: </span>
+              <span class="input-group-text w-100">Mã bưu chính: </span>
             </div>
-            <input name="address_component_post_code" type="text" class="form-control" placeholder="">
+            <input name="address_component_post_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Mã vùng điện thoại: </span>
+              <span class="input-group-text w-100">Mã vùng điện thoại: </span>
             </div>
-            <input name="address_component_phone_code" type="text" class="form-control" placeholder="">
+            <input name="address_component_phone_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Zip code: </span>
+              <span class="input-group-text w-100">Zip code: </span>
             </div>
-            <input name="address_component_zip_code" type="text" class="form-control" placeholder="">
+            <input name="address_component_zip_code" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Thứ tự sắp xếp: </span>
+              <span class="input-group-text w-100">Thứ tự sắp xếp: </span>
             </div>
-            <input name="address_component_order" type="text" class="form-control" placeholder="">
+            <input name="address_component_order" type="text" class="form-control">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">Trạng thái: </span>
+              <span class="input-group-text w-100">Trạng thái: </span>
             </div>
-            <select name="address_component_status" class="custom-select" id="">
+            <select name="address_component_status" class="custom-select">
               <option selected value="1">Kích hoạt</option>
               <option value="0">Vô hiệu</option>
             </select>
           </div>
-          <div class="input-group mb-3 ">
+          <div class="input-group mb-3 d-none">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">country_code: </span>
+              <span class="input-group-text w-100">country_code: </span>
             </div>
-            <input id="address_component_unit_country_code_hidden" name="address_component_unit_country_code_hidden" type="text" class="form-control" placeholder="" value="">
+            <input id="address_component_unit_country_code_hidden" name="address_component_unit_country_code_hidden" type="text" class="form-control" value="">
           </div>
-          <div class="input-group mb-3 ">
+          <div class="input-group mb-3 d-none">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">all type: </span>
+              <span class="input-group-text w-100">all type: </span>
             </div>
-            <input id="address_component_unit_all_type_hidden" name="address_component_unit_all_type_hidden" type="text" class="form-control" placeholder="" value="">
+            <input id="address_component_unit_all_type_hidden" name="address_component_unit_all_type_hidden" type="text" class="form-control" value="">
           </div>
-          <div class="input-group mb-3 ">
+          <div class="input-group mb-3 d-none">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">type: </span>
+              <span class="input-group-text w-100">type: </span>
             </div>
-            <input id="address_component_unit_type_hidden" name="address_component_unit_type_hidden" type="text" class="form-control" placeholder="" value="">
+            <input id="address_component_unit_type_hidden" name="address_component_unit_type_hidden" type="text" class="form-control" value="">
           </div>
-          <div class="input-group mb-3 ">
+          <div class="input-group mb-3 d-none">
             <div class="input-group-prepend" >
-              <span class="input-group-text w-100" id="">level: </span>
+              <span class="input-group-text w-100">level: </span>
             </div>
-            <input id="address_component_unit_level_hidden" name="address_component_unit_level_hidden" type="text" class="form-control" placeholder="" value="0">
+            <input id="address_component_unit_level_hidden" name="address_component_unit_level_hidden" type="text" class="form-control" value="0">
           </div>
         </div>
         <div class="modal-footer">
@@ -181,16 +185,22 @@
 </div>
 
 <?php
-echo "<script>var admistrative_unit_address_component_level = " . json_encode($admisUnitLevel) . "; </script>";
-echo "<script>var admistrative_unit_country_code = " . json_encode($admisUnitCountryCode) . "; </script>";
-echo "<script>var admistrative_unit_type = " . json_encode($admisUnitType) . "; </script>";
-echo "<script>var admistrative_unit_code = " . json_encode($admisUnitCode) . "; </script>";
+echo "<script>var admistrative_unit_address_component_level = " . json_encode(array_column($admisUnitArray, "admistrative_unit_address_component_level")) . "; </script>";
+echo "<script>var admistrative_unit_country_code = " . json_encode(array_column($admisUnitArray, "admistrative_unit_country_code")) . "; </script>";
+echo "<script>var admistrative_unit_type = " . json_encode(array_column($admisUnitArray, "admistrative_unit_type")) . "; </script>";
+echo "<script>var admistrative_unit_code = " . json_encode(array_column($admisUnitArray, "admistrative_unit_code")) . "; </script>";
+echo "<script>var admistrative_unit_name = " . json_encode(array_column($admisUnitArray, "admistrative_unit_name")) . "; </script>"; 
 ?>
 
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
-
+ 
 <script src="public/js/AddressComponent.js"></script>
-<script src="public/js/table.js"></script>
+<script type="text/javascript" src="public/table/datatables.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('#table').DataTable();
+  });
+</script>
 </body>
 </html>
