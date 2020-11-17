@@ -19,7 +19,7 @@
     <div class="input-group-prepend">
       <span class="input-group-text w-100">Địa chỉ: </span>
     </div>
-    <input type="text" class="form-control">
+    <input id="input-address" type="text" class="form-control">
   </div>
   <div class="input-group mb-3 pr-3">
     <div class="input-group-prepend">
@@ -41,7 +41,6 @@
       <span id="title-level-1" class="input-group-text w-100"></span>
     </div>
     <select class="custom-select" id="input-level-1" onchange="changeSelectOption(1);">
-
     </select>
   </div>
   <div id="level-2-container" class="input-group mb-3 pr-3 d-none">
@@ -49,15 +48,27 @@
       <span id="title-level-2" class="input-group-text w-100"></span>
     </div>
     <select class="custom-select" id="input-level-2" onchange="changeSelectOption(2);">
-
     </select>
   </div>
   <div id="level-3-container" class="input-group mb-3 pr-3 d-none">
     <div class="input-group-prepend">
       <span id="title-level-3" class="input-group-text w-100"></span>
     </div>
-    <select class="custom-select" id="input-level-3">
-
+    <select class="custom-select" id="input-level-3" onchange="changeSelectOption(3);">
+    </select>
+  </div>
+  <div id="level-4-container" class="input-group mb-3 pr-3 d-none">
+    <div class="input-group-prepend">
+      <span id="title-level-4" class="input-group-text w-100"></span>
+    </div>
+    <select class="custom-select" id="input-level-4" onchange="changeSelectOption(4);">
+    </select>
+  </div>
+  <div id="level-5-container" class="input-group mb-3 pr-3 d-none">
+    <div class="input-group-prepend">
+      <span id="title-level-5" class="input-group-text w-100"></span>
+    </div>
+    <select class="custom-select" id="input-level-5" onchange="changeSelectOption(5);">
     </select>
   </div>
   <div class="input-group mb-3 pr-3">

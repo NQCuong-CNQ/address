@@ -185,11 +185,11 @@
 </div>
 
 <?php
-echo "<script>var admistrative_unit_address_component_level = " . json_encode(array_column($admisUnitArray, "admistrative_unit_address_component_level")) . "; </script>";
-echo "<script>var admistrative_unit_country_code = " . json_encode(array_column($admisUnitArray, "admistrative_unit_country_code")) . "; </script>";
-echo "<script>var admistrative_unit_type = " . json_encode(array_column($admisUnitArray, "admistrative_unit_type")) . "; </script>";
-echo "<script>var admistrative_unit_code = " . json_encode(array_column($admisUnitArray, "admistrative_unit_code")) . "; </script>";
-echo "<script>var admistrative_unit_name = " . json_encode(array_column($admisUnitArray, "admistrative_unit_name")) . "; </script>"; 
+echo "<script>var admistrative_unit_address_component_level = ".json_encode(array_column($admisUnitArray, "admistrative_unit_address_component_level"))."; </script>";
+echo "<script>var admistrative_unit_country_code = ".json_encode(array_column($admisUnitArray, "admistrative_unit_country_code"))."; </script>";
+echo "<script>var admistrative_unit_type = ".json_encode(array_column($admisUnitArray, "admistrative_unit_type"))."; </script>";
+echo "<script>var admistrative_unit_code = ".json_encode(array_column($admisUnitArray, "admistrative_unit_code"))."; </script>";
+echo "<script>var admistrative_unit_name = ".json_encode(array_column($admisUnitArray, "admistrative_unit_name"))."; </script>"; 
 ?>
 
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
@@ -197,10 +197,6 @@ echo "<script>var admistrative_unit_name = " . json_encode(array_column($admisUn
  
 <script src="public/js/AddressComponent.js"></script>
 <script type="text/javascript" src="public/table/datatables.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-      $('#table').DataTable();
-  });
-</script>
+<script type="text/javascript" src="public/js/StyleTable.js"></script>
 </body>
 </html>

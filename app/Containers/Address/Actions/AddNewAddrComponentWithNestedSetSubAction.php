@@ -30,22 +30,17 @@ class AddNewAddrComponentWithNestedSetSubAction extends SubAction
     	if($request->address_component_unit_level_hidden > 0){
 
             $parentUUID = Apiato::call('Address@GetParentUUIDTask', [$request->address_component_unit_level_hidden, $request->address_component_unit_country_code_hidden, $request->address_component_code]);
-            echo $parentUUID;
+
     		$request->address_component_parent_uuid = $parentUUID;
-            // 2. lay right cha
             $parentRight = Apiato::call('Address@GetParentRightTask', [$parentUUID]);
-    		// 3. left moi bang right cha
+
             $newLeft = $parentRight;
-    		// 4. lay level node cha
             $parentLevel = Apiato::call('Address@GetParentLevelTask', [$parentUUID]);
-    		// 5. update right +2 cho right >= new left
-            // 6. Update left các node khác: Update Clothing set left = left +2 where  left > new_left
             Apiato::call('Address@UpdateLeftRightWhenAddTask', [$newLeft]);
-    		// 7. level +1, left, right +1
+
             $request->address_component_level = $request->address_component_unit_level_hidden;
             $request->address_component_level_left = $newLeft;
             $request->address_component_level_right = $request->address_component_level_left +1;
-
             $request->address_component_country_code = $request->address_component_unit_country_code_hidden;
     	}
         $request->address_component_unit_level = $request->address_component_level;

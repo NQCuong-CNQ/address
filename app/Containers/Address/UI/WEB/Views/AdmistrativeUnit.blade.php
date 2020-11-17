@@ -142,7 +142,6 @@
               <option value="0">Vô hiệu</option>
             </select>
           </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -156,10 +155,6 @@
 <script src="public/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
 <script src="public/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="public/table/datatables.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-      $('#table').DataTable();
-  });
-</script>
+<script type="text/javascript" src="public/js/StyleTable.js"></script>
 </body>
 </html>
